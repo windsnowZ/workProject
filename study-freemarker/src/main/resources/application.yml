@@ -1,0 +1,5 @@
+spring:
+  freemarker:
+    template-loader-path: classpath:/templates/
+    settings:
+      classic_compatible: true

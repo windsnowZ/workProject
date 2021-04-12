@@ -22,4 +22,6 @@ public class OrderDTO {
     private String payType;
     private WxbAddress sendAddress;
     private Integer age;
+    private String name;
+
 }

@@ -44,7 +44,7 @@
 
     <dependencyManagement>
         <dependencies>
-            <!--springcloud-alibaba的版本-->
+            <!--123123123springcloud-alibaba的版本-->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>

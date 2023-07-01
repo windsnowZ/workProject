@@ -60,18 +60,14 @@ public class SearchService implements ISearchService {
             //spu->esGoods
             ESGoods esGoods = new ESGoods();
             esGoods.setSpuId(spu.getId());
-
             esGoods.setBrandId(spu.getBrand().getId());
             esGoods.setBrandName(spu.getBrand().getName());
-
-
             esGoods.setCid1id(spu.getCat1().getId());
             esGoods.setCat1name(spu.getCat1().getName());
             esGoods.setCid2id(spu.getCat2().getId());
             esGoods.setCat2name(spu.getCat2().getName());
             esGoods.setCid3id(spu.getCat3().getId());
             esGoods.setCat3name(spu.getCat3().getName());
-
             esGoods.setCreateTime(new Date());
             esGoods.setGoodsName(spu.getGoodsName());
             esGoods.setPrice(spu.getPrice().doubleValue());

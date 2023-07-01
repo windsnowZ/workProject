@@ -27,6 +27,8 @@
         <module>protal-uc</module>
         <module>portal-order</module>
         <module>portal-pay</module>
+        <module>portal-job</module>
+        <module>portal-sec</module>
     </modules>
 
     <!--    锁定springboot的版本-->

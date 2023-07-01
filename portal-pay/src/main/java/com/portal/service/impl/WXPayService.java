@@ -52,7 +52,11 @@ public class WXPayService implements IPayService {
                 totalFee += itemPrice;
             }
             //调用微信的统一下单接口，下单
+//            调用微信第三方接口 传递订单ID和总费用的信息和支付成功的后的请求的URL信息
+
+//
             String payUrl = weixinPay(orderId, totalFee, notifyUrl);
+//            返回二维码生成的URL信息
 
             Map data = new HashMap();
             data.put("payUrl", payUrl);

@@ -16,6 +16,7 @@ import com.portal.order.mapper.WxbOrderMapper;
 import com.portal.order.service.IWxbOrderService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.portal.vo.Result;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,7 +37,6 @@ import java.util.List;
  * @since 2021-04-10
  */
 @Service
-@Transactional
 public class WxbOrderServiceImpl extends ServiceImpl<WxbOrderMapper, WxbOrder> implements IWxbOrderService {
 
     @Autowired
@@ -64,6 +64,7 @@ public class WxbOrderServiceImpl extends ServiceImpl<WxbOrderMapper, WxbOrder> i
 
 
     @Override
+    @GlobalTransactional
     public Result order(OrderDTO orderDTO) {
 
         if (orderDTO == null) {
@@ -145,9 +146,11 @@ public class WxbOrderServiceImpl extends ServiceImpl<WxbOrderMapper, WxbOrder> i
         }
 
 
-        //延时消息
-        rocketMQTemplate.syncSend(TOPIC+":"+TAG,
-            MessageBuilder.withPayload(orderId).build(),2000,4);
+//        int i = 1/0;
+
+//        //延时消息在下单操作时利用延时队列解决超时未支付的功能
+//        rocketMQTemplate.syncSend(TOPIC+":"+TAG,
+//            MessageBuilder.withPayload(orderId).build(),2000,4);
 
 
 

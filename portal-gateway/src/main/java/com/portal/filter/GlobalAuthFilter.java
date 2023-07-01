@@ -40,7 +40,8 @@ public class GlobalAuthFilter implements GlobalFilter, Ordered {
         //放行资源
         URI uri = request.getURI();
         String[] whiteList = {"/user/login","/search/search","/search/init",
-            "/index/findContetByCid","/index/hot/goodsList","/pay/notify"};
+            "/index/findContetByCid","/index/hot/goodsList","/pay/notify",
+            "/sec/findDateMenues","/sec/findSecByDateBetw","/sec/order"};
 
         for (String w : whiteList) {
 

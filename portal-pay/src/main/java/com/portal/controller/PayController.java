@@ -69,7 +69,7 @@ public class PayController {
             //获取订单id
             String orderId = map.get("out_trade_no");
 
-
+//判断是否支付成功，如果支付成功修改订单状态
             if(signatureValid&&"SUCCESS".equals(map.get("result_code"))){
                 //修改订单状态(支付状态、订单状态、支付时间、修改时间)
                 WxbOrder order = new WxbOrder();
@@ -78,7 +78,7 @@ public class PayController {
                 order.setState(1);
                 orderClient.update(order);
 
-                //通知前端
+                //通知前端 websocket 通知前端
                 Websocket.sendMessageToClient(orderId,"success");
 
             }

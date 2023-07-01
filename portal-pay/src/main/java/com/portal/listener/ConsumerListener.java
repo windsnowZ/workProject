@@ -35,6 +35,8 @@ public class ConsumerListener implements RocketMQListener<String> {
     @Autowired
     private OrderClient orderClient;
 
+
+//    超时未支付关闭订单
     @Override
     public void onMessage(String orderId) {
 

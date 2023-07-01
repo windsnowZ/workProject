@@ -22,26 +22,28 @@ public class CartController {
 
     @Autowired
     private ICartService cartService;
-
+//  保存购物车
     @RequestMapping("add")
     public Result add(@RequestBody Map buyInfo){
     
         return cartService.saveCart(buyInfo);
     }
 
-
+// 获取购物车列表
     @RequestMapping("list")
     public List<Cart> list(){
 
         return cartService.cartList();
     }
 
+//   编辑购物车
     @RequestMapping("cartEdit")
     public Result cartEdit(@RequestBody Cart cart){
 
         return  cartService.cartEdit(cart);
     }
 
+//    选择购物车信息
     @RequestMapping("listChooseCart")
     public List<Cart> listChooseCart(){
 

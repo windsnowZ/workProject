@@ -1,4 +1,5 @@
 package com.portal;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,7 +8,9 @@ import java.security.*;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Iterator;
 
 public class RsaUtils {
     private static final int DEFAULT_KEY_SIZE = 2048;
@@ -36,6 +39,7 @@ public class RsaUtils {
 
     /**
      * 获取公钥
+     *
      * @param bytes 公钥的字节形式
      * @return
      * @throws Exception
@@ -49,6 +53,7 @@ public class RsaUtils {
 
     /**
      * 获取密钥
+     *
      * @param bytes 私钥的字节形式
      * @return
      * @throws Exception
@@ -96,13 +101,57 @@ public class RsaUtils {
         Files.write(dest.toPath(), bytes);
     }
 
-    public static void main(String[] args)throws Exception {
+//    public static void main(String[] args)throws Exception {
+//
+//        String privateFilePath = "E:\\key\\rsa";
+//        String publicFilePath = "E:\\key\\rsa.pub";
+//
+//        RsaUtils.generateKey(publicFilePath,privateFilePath,"portal",2048);
+//    }
 
-        String privateFilePath = "E:\\key\\rsa";
-        String publicFilePath = "E:\\key\\rsa.pub";
+//    public static void main(String[] args) {
+//        ArrayList<String> list = new ArrayList<String>();
+//        list.add("a");
+//        list.add("b");
+//        list.add("b");
+//        list.add("c");
+//        list.add("c");
+//
+//        for(int i=0;i<list.size();i++)
+//        {
+//            String s=list.get(i);
+//            if(s.equals("b"))
+//            {
+//                list.remove(s);
+//            }
+//        }
+//
+//
+//
+//
+//
+//        list.forEach( System.out::println);
+//    }
 
-        RsaUtils.generateKey(publicFilePath,privateFilePath,"portal",2048);
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("a");
+        list.add("b");
+        list.add("b");
+        list.add("c");
+        list.add("c");
+        list.remove(1);
+
+        Iterator<String> it = list.iterator();
+        while (it.hasNext())
+        {
+            String s = it.next();
+            if (s.equals("b"))
+            {
+                it.remove();
+            }
+        }
+
+        list.forEach( System.out::println);
     }
-
-
 }

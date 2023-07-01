@@ -88,5 +88,29 @@
             <artifactId>commons-pool2</artifactId>
             <version>2.8.0</version>
         </dependency>
+
+
+<!--     seata客户端   -->
+
+        <!-- seata -->
+        <dependency>
+            <groupId>io.seata</groupId>
+            <artifactId>seata-spring-boot-starter</artifactId>
+            <version>1.3.0</version>
+            <!-- 这里需要排除自身的seata-all -->
+            <exclusions>
+                <exclusion>
+                    <artifactId>seata-all</artifactId>
+                    <groupId>io.seata</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- 导入与之前下载的seata版本一致的包 -->
+        <dependency>
+            <groupId>io.seata</groupId>
+            <artifactId>seata-all</artifactId>
+            <version>1.3.0</version>
+        </dependency>
+
     </dependencies>
 </project>

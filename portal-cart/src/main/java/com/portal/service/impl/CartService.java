@@ -32,6 +32,7 @@ public class CartService implements ICartService {
     @Autowired
     private GoodsClient goodsClient;
 
+    /*传递skuid和购买的数量*/
 
     @Override
     public Result saveCart(Map buyInfo) {
@@ -49,8 +50,16 @@ public class CartService implements ICartService {
         //获取用户的购物车
         BoundHashOperations<String, Object, Object> operations = stringRedisTemplate.boundHashOps("CART:" + userInfo.getMemeberId());
 
+//        大key是Cart+用户信息
+
         //获取sku
         Object cartJson = operations.get(buyInfo.get("skuId"));
+
+//        小key是skuid
+
+//        object是订单信息
+
+//        如果订单不存在的情况
 
         if (cartJson == null) {//要买的sku在购物车中不存在
 
@@ -105,6 +114,8 @@ public class CartService implements ICartService {
 
         List myCarts = new ArrayList();
 
+
+//        获取用户的订单信息
         values.forEach(json->{
             Cart cart = JsonUtils.toBean((String) json, Cart.class);
             myCarts.add(cart);
@@ -124,6 +135,7 @@ public class CartService implements ICartService {
         BoundHashOperations<String, Object, Object> operations = stringRedisTemplate.boundHashOps("CART:" + userInfo.getMemeberId());
 
         //覆盖
+//      编辑购物车信息
         operations.put(cart.getSkuId(),JsonUtils.toString(cart));
 
 
@@ -140,7 +152,7 @@ public class CartService implements ICartService {
         List<Object> cartJsons = operations.values();
 
         List<Cart> carts = new ArrayList<>();
-
+//        选择购物车信息
         cartJsons.forEach(json->{
             Cart cart = JsonUtils.toBean((String) json, Cart.class);
             if(cart.isChoose()){
